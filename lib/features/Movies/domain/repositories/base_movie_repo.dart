@@ -1,9 +1,9 @@
 import 'package:movie_hub/features/Movies/domain/entities/movie.dart';
 
 abstract class BaseMoviesRepo {
-  Future<List<Movie>> getNowPlaying();
+  Future<List<Movie>> getNowPlayingMovies();
 
-  Future<List<Movie>> getPopular();
+  Future<List<Movie>> getPopularMovies();
 
-  Future<List<Movie>> getTopRated();
+  Future<List<Movie>> getTopRatedMovies();
 }
