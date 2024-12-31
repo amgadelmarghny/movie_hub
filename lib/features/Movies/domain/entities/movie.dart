@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class Movie extends Equatable {
   final int id;
-  final String title, backdropPath, overview;
+  final String title, backdropPath, overview, releaseDate;
   final double voteAverage;
   final List<int> genreIds;
 
@@ -13,6 +13,7 @@ class Movie extends Equatable {
     required this.overview,
     required this.voteAverage,
     required this.genreIds,
+    required this.releaseDate,
   });
 
   @override
@@ -23,5 +24,6 @@ class Movie extends Equatable {
         overview,
         override,
         genreIds,
+        releaseDate,
       ];
 }
