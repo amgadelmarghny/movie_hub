@@ -6,7 +6,7 @@ class GetNowPlayingMovieUsecase {
 
   GetNowPlayingMovieUsecase({required this.baseMoviesRepo});
 
-  Future<List<Movie>> getNowPlayingMovie() async {
+  Future<List<Movie>> getNowPlayingMovies() async {
     final response = await baseMoviesRepo.getNowPlayingMovies();
     return response;
   }

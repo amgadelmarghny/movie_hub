@@ -11,7 +11,7 @@ abstract class DioHelper {
     ));
   }
 
-  static  Future<Response> getData({required String path})async{
-  return await  _dio.get(path);
+  static  Future<Response> getData({required String path,required String apiKey})async{
+  return await  _dio.get('$path?api_key=$apiKey');
   }
 }
