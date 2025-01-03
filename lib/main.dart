@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_hub/core/network/dio_helper.dart';
 
-void main() {
+void main() async {
   DioHelper.init();
   runApp(const MovieHub());
 }
