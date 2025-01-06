@@ -6,8 +6,8 @@ import 'package:movie_hub/features/Movies/domain/usecases/get_now_playing_movie_
 
 final sl = GetIt.instance;
 
-class ServiceLocator {
-  void init() {
+abstract class ServiceLocator {
+  static void init() {
     // data source
     sl.registerLazySingleton<BaseMovieDataSource>(() => MovieDataSource());
     // Repo
