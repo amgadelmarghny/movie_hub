@@ -1,18 +1,22 @@
 part of 'movie_bloc.dart';
 
 sealed class MovieState extends Equatable {
-  final List<Movie> movies;
-  final ResquestState nowPlayingMovieState;
-  final String errorMessage;
-
-  const MovieState(
-      {this.movies = const [],
-      this.nowPlayingMovieState = ResquestState.loading,
-      this.errorMessage = ''});
   @override
-  List<Object> get props => [movies, nowPlayingMovieState, errorMessage];
+  List<Object> get props => [];
 }
 
 final class MovieInitial extends MovieState {}
 
+final class GetNowPlayingStateLoading extends MovieState {}
 
+final class GetNowPlayingStateSuccess extends MovieState {
+  final List<Movie> movies;
+
+  GetNowPlayingStateSuccess({required this.movies});
+}
+
+final class GetNowPlayingStateFailure extends MovieState {
+  final String errorMessage;
+
+  GetNowPlayingStateFailure({required this.errorMessage});
+}
