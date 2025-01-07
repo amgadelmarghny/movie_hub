@@ -5,7 +5,7 @@ import 'package:movie_hub/core/services/service_locator.dart';
 import 'package:movie_hub/core/utils/bloc_observer.dart';
 import 'package:movie_hub/features/Movies/presentation/views/movies_view.dart';
 
-void main() async {
+void main() {
   DioHelper.init();
   ServiceLocator.init();
   Bloc.observer = MyBlocObserver();
@@ -19,6 +19,7 @@ class MovieHub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Movie Hub',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,

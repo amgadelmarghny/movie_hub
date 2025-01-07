@@ -20,3 +20,31 @@ final class GetNowPlayingStateFailure extends MovieState {
 
   GetNowPlayingStateFailure({required this.errorMessage});
 }
+
+final class GetPopularMoviesStateLoading extends MovieState {}
+
+final class GetPopularMoviesStateSuccess extends MovieState {
+  final List<Movie> movies;
+
+  GetPopularMoviesStateSuccess({required this.movies});
+}
+
+final class GetPopularMoviesStateFailure extends MovieState {
+  final String errorMessage;
+
+  GetPopularMoviesStateFailure({required this.errorMessage});
+}
+
+final class GetTopRatedMoviesStateLoading extends MovieState {}
+
+final class GetTopRatedMoviesStateSuccess extends MovieState {
+  final List<Movie> movies;
+
+  GetTopRatedMoviesStateSuccess({required this.movies});
+}
+
+final class GetTopRatedMoviesStateFailure extends MovieState {
+  final String errorMessage;
+
+  GetTopRatedMoviesStateFailure({required this.errorMessage});
+}
