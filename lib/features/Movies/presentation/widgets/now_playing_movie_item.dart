@@ -9,7 +9,7 @@ class NowPlayingMovieItem extends StatelessWidget {
     super.key,
     required this.movieModel,
   });
-  
+
   final Movie movieModel;
   @override
   Widget build(BuildContext context) {
@@ -38,11 +38,21 @@ class NowPlayingMovieItem extends StatelessWidget {
               );
             },
             blendMode: BlendMode.dstIn,
-            child: CachedNetworkImage(
-              height: 560.0,
-              imageUrl: ApiConstance.imageUrl(movieModel.backdropPath),
-              fit: BoxFit.cover,
-            ),
+            child: movieModel.backdropPath != null
+                ? CachedNetworkImage(
+                    height: 560.0,
+                    imageUrl: ApiConstance.imageUrl(movieModel.backdropPath!),
+                    fit: BoxFit.cover,
+                  )
+                : SizedBox(
+                    height: 560.0,
+                    child: Center(
+                      child: Text(
+                        'There is no picture yet',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
+                  ),
           ),
           NowPlayingMovieItemText(title: movieModel.title),
         ],
