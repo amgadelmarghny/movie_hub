@@ -20,7 +20,6 @@ class _PopularMoviesSectionBodyState extends State<PopularMoviesSectionBody> {
   Widget build(BuildContext context) {
     List<Movie> moviesList = BlocProvider.of<MovieBloc>(context).popularMovies;
     return BlocConsumer<MovieBloc, MovieState>(
-      buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
         if (state is GetPopularMoviesStateFailure) {
           return SizedBox(

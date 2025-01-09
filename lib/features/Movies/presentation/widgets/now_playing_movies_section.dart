@@ -20,6 +20,8 @@ class _NowPlayingMoviesSectionState extends State<NowPlayingMoviesSection> {
         BlocProvider.of<MovieBloc>(context).nowPlayingMovies;
     return BlocConsumer<MovieBloc, MovieState>(
       builder: (context, state) {
+              print('stte');
+
         // loading
         if (state is GetNowPlayingStateFailure) {
           return SizedBox(

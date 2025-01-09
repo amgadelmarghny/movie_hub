@@ -21,7 +21,6 @@ class _TopRatedMoviesSectionBodyState extends State<TopRatedMoviesSectionBody> {
     List<Movie> moviesList = BlocProvider.of<MovieBloc>(context).topRatedMovies;
 
     return BlocConsumer<MovieBloc, MovieState>(
-      buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
         if (state is GetTopRatedMoviesStateFailure) {
           return SizedBox(

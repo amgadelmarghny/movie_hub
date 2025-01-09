@@ -69,11 +69,9 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
           );
         }, (movies) {
           topRatedMovies = movies;
-          print('lengh :::: ${topRatedMovies.length}');
           emit(
             GetTopRatedMoviesStateSuccess(),
           );
-          print('Stateeeeee : emit');
         });
       },
     );
