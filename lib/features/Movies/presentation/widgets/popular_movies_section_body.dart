@@ -5,22 +5,17 @@ import 'package:movie_hub/features/Movies/domain/entities/movie.dart';
 import 'package:movie_hub/features/Movies/presentation/bloc/movie_bloc.dart';
 import 'package:movie_hub/features/Movies/presentation/widgets/animation_movie_item_list_view_builder.dart';
 
-class PopularMoviesSectionBody extends StatefulWidget {
+class PopularMoviesSectionBody extends StatelessWidget {
   const PopularMoviesSectionBody({
     super.key,
   });
 
   @override
-  State<PopularMoviesSectionBody> createState() =>
-      _PopularMoviesSectionBodyState();
-}
-
-class _PopularMoviesSectionBodyState extends State<PopularMoviesSectionBody> {
-  @override
   Widget build(BuildContext context) {
-    List<Movie> moviesList = BlocProvider.of<MovieBloc>(context).popularMovies;
-    return BlocConsumer<MovieBloc, MovieState>(
+    return BlocBuilder<MovieBloc, MovieState>(
       builder: (context, state) {
+        var bloc = MovieBloc.get(context);
+        
         if (state is GetPopularMoviesStateFailure) {
           return SizedBox(
             height: 170.0,
@@ -32,10 +27,10 @@ class _PopularMoviesSectionBodyState extends State<PopularMoviesSectionBody> {
           );
         }
         return ConditionalBuilder(
-          condition: moviesList.isNotEmpty,
+          condition: bloc.popularMovies.isNotEmpty,
           builder: (context) {
             return AnimationMovieItemsListViewBuilder(
-              moviesList: moviesList,
+              moviesList: bloc.popularMovies,
             );
           },
           fallback: (context) => SizedBox(
@@ -47,11 +42,6 @@ class _PopularMoviesSectionBodyState extends State<PopularMoviesSectionBody> {
             ),
           ),
         );
-      },
-      listener: (BuildContext context, MovieState state) {
-        if (state is GetPopularMoviesStateSuccess) {
-          setState(() {});
-        }
       },
     );
   }

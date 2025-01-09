@@ -17,7 +17,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
   List<Movie> nowPlayingMovies = [];
   List<Movie> popularMovies = [];
   List<Movie> topRatedMovies = [];
-
+  static MovieBloc get(context) => BlocProvider.of(context);
   MovieBloc(
       {required this.getNowPlayingMovieUsecase,
       required this.getPopularMoviesUsecase,

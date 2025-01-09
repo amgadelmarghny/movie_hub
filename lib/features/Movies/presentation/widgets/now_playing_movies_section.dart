@@ -1,26 +1,17 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_hub/features/Movies/domain/entities/movie.dart';
 import 'package:movie_hub/features/Movies/presentation/bloc/movie_bloc.dart';
 import 'package:movie_hub/features/Movies/presentation/widgets/now_playing_section_success_widget.dart';
 
-class NowPlayingMoviesSection extends StatefulWidget {
+class NowPlayingMoviesSection extends StatelessWidget {
   const NowPlayingMoviesSection({super.key});
 
   @override
-  State<NowPlayingMoviesSection> createState() =>
-      _NowPlayingMoviesSectionState();
-}
-
-class _NowPlayingMoviesSectionState extends State<NowPlayingMoviesSection> {
-  @override
   Widget build(BuildContext context) {
-    List<Movie> moviesList =
-        BlocProvider.of<MovieBloc>(context).nowPlayingMovies;
-    return BlocConsumer<MovieBloc, MovieState>(
+    return BlocBuilder<MovieBloc, MovieState>(
       builder: (context, state) {
-              print('stte');
+        var bloc = MovieBloc.get(context);
 
         // loading
         if (state is GetNowPlayingStateFailure) {
@@ -35,10 +26,10 @@ class _NowPlayingMoviesSectionState extends State<NowPlayingMoviesSection> {
           );
         }
         return ConditionalBuilder(
-          condition: moviesList.isNotEmpty,
+          condition: bloc.nowPlayingMovies.isNotEmpty,
           builder: (context) {
             return NowPlayingMoviesSuccessWidget(
-              moviesList: moviesList,
+              moviesList: bloc.nowPlayingMovies,
             );
           },
           fallback: (context) => SizedBox(
@@ -50,11 +41,6 @@ class _NowPlayingMoviesSectionState extends State<NowPlayingMoviesSection> {
             ),
           ),
         );
-      },
-      listener: (BuildContext context, MovieState state) {
-        if (state is GetNowPlayingStateSuccess) {
-          setState(() {});
-        }
       },
     );
   }
