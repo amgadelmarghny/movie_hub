@@ -33,7 +33,7 @@ class MovieDataSource implements BaseMovieDataSource {
   @override
   Future<List<MovieModel>> getTopRatedMovies() async {
     final repsonse = await DioHelper.getData(
-      path: 'movie/top_reted',
+      path: 'movie/top_rated',
       apiKey: ApiConstance.apiKey,
     );
     return getMethodImplementation(repsonse);

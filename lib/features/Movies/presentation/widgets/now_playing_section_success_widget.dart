@@ -16,6 +16,7 @@ class NowPlayingMoviesSuccessWidget extends StatelessWidget {
       duration: const Duration(milliseconds: 500),
       child: CarouselSlider(
         options: CarouselOptions(
+          autoPlay: true,
           height: 400.0,
           viewportFraction: 1.0,
           onPageChanged: (index, reason) {},
