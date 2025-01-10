@@ -27,7 +27,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     on<GetNowPlayingMoviesEvent>(
       (event, emit) async {
         emit(GetNowPlayingStateLoading());
-        final dataResult = await getNowPlayingMovieUsecase.execute();
+        final dataResult = await getNowPlayingMovieUsecase();
         dataResult.fold(
           (error) => emit(
             GetNowPlayingStateFailure(errorMessage: error.message),
@@ -45,7 +45,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     on<GetPopularMoviesEvent>(
       (event, emit) async {
         emit(GetPopularMoviesStateLoading());
-        final dataResult = await getPopularMoviesUsecase.execute();
+        final dataResult = await getPopularMoviesUsecase();
         dataResult.fold(
             (error) => emit(
                   GetPopularMoviesStateFailure(errorMessage: error.message),
@@ -61,7 +61,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     on<GetTopRatedMoviesEvent>(
       (event, emit) async {
         emit(GetTopRatedMoviesStateLoading());
-        final dataResult = await getTopRatedMoviesUsecase.execute();
+        final dataResult = await getTopRatedMoviesUsecase();
         dataResult.fold((error) {
           log('error : $error');
           emit(
