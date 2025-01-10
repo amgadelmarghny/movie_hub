@@ -4,13 +4,14 @@ import 'package:movie_hub/core/error/failure.dart';
 import 'package:movie_hub/features/Movies/domain/entities/movie.dart';
 import 'package:movie_hub/features/Movies/domain/repositories/base_movie_repo.dart';
 
-class GetTopRatedMoviesUsecase implements BaseMovieUsecase<List<Movie>> {
+class GetTopRatedMoviesUsecase
+    implements BaseMovieUsecase<List<Movie>, NoParameters> {
   final BaseMoviesRepo baseMoviesRepo;
 
   GetTopRatedMoviesUsecase({required this.baseMoviesRepo});
 
   @override
-  Future<Either<Failure, List<Movie>>> call() async {
+  Future<Either<Failure, List<Movie>>> call(NoParameters noParameter) async {
     final response = await baseMoviesRepo.getTopRatedMovies();
     return response;
   }

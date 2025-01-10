@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_hub/core/base_usecases/base_movie_usecase.dart';
 import 'package:movie_hub/features/Movies/domain/entities/movie.dart';
 import 'package:movie_hub/features/Movies/domain/usecases/get_now_playing_movie_usecase.dart';
 import 'package:movie_hub/features/Movies/domain/usecases/get_popular_movies_usecase.dart';
@@ -27,7 +28,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     on<GetNowPlayingMoviesEvent>(
       (event, emit) async {
         emit(GetNowPlayingStateLoading());
-        final dataResult = await getNowPlayingMovieUsecase();
+        final dataResult = await getNowPlayingMovieUsecase(NoParameters());
         dataResult.fold(
           (error) => emit(
             GetNowPlayingStateFailure(errorMessage: error.message),
@@ -45,7 +46,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     on<GetPopularMoviesEvent>(
       (event, emit) async {
         emit(GetPopularMoviesStateLoading());
-        final dataResult = await getPopularMoviesUsecase();
+        final dataResult = await getPopularMoviesUsecase(NoParameters());
         dataResult.fold(
             (error) => emit(
                   GetPopularMoviesStateFailure(errorMessage: error.message),
@@ -61,7 +62,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     on<GetTopRatedMoviesEvent>(
       (event, emit) async {
         emit(GetTopRatedMoviesStateLoading());
-        final dataResult = await getTopRatedMoviesUsecase();
+        final dataResult = await getTopRatedMoviesUsecase(NoParameters());
         dataResult.fold((error) {
           log('error : $error');
           emit(
