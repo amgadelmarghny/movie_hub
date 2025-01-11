@@ -10,6 +10,6 @@ abstract class BaseMoviesRepo {
 
   Future<Either<Failure, List<Movie>>> getTopRatedMovies();
 
-  Future<Either<Failure, List<MovieDetails>>> getMovieDetails(
+  Future<Either<Failure, MovieDetails>> getMovieDetails(
       {required int movieId});
 }
