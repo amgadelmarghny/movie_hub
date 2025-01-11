@@ -4,6 +4,7 @@ import 'package:movie_hub/features/Movies/data/datasources/remote/movie_remote_d
 import 'package:movie_hub/features/Movies/data/models/movie_model.dart';
 import 'package:movie_hub/features/Movies/domain/entities/movie.dart';
 import 'package:movie_hub/features/Movies/domain/entities/movie_details.dart';
+import 'package:movie_hub/features/Movies/domain/entities/movie_recommendation.dart';
 import 'package:movie_hub/features/Movies/domain/repositories/base_movie_repo.dart';
 import 'package:dartz/dartz.dart';
 
@@ -48,6 +49,17 @@ class MovieRepo implements BaseMoviesRepo {
       return Left(
         ServerFailure(message: exception.errorModel.message),
       );
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MovieRecommendation>>> getMovieRecommendations(
+      {required int movieId}) async {
+    final result = await baseMovieDataSource.getMovieRecommendations(movieId);
+    try {
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.errorModel.message));
     }
   }
 }

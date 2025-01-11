@@ -5,12 +5,14 @@ import 'package:movie_hub/core/network/server_exception.dart';
 import 'package:movie_hub/core/utils/api_constance.dart';
 import 'package:movie_hub/features/Movies/data/models/movie_details_model.dart';
 import 'package:movie_hub/features/Movies/data/models/movie_model.dart';
+import 'package:movie_hub/features/Movies/data/models/movie_recommendation_model.dart';
 
 abstract class BaseMovieDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
   Future<List<MovieModel>> getPopularMovies();
   Future<List<MovieModel>> getTopRatedMovies();
   Future<MovieDetailsModel> getMovieDetails(int movieId);
+  Future<List<MovieRecommendationModel>> getMovieRecommendations(int movieId);
 }
 
 class MovieDataSource implements BaseMovieDataSource {
@@ -63,6 +65,23 @@ class MovieDataSource implements BaseMovieDataSource {
     );
     if (repsonse.statusCode == 200) {
       return MovieDetailsModel.fromJson(repsonse.data);
+    } else {
+      throw ServerException(
+        errorModel: ErrorModel.fromJson(repsonse.data),
+      );
+    }
+  }
+
+  @override
+  Future<List<MovieRecommendationModel>> getMovieRecommendations(
+      int movieId) async {
+    final repsonse = await DioHelper.getData(
+      path: 'movie/$movieId/recommendations',
+      apiKey: ApiConstance.apiKey,
+    );
+    if (repsonse.statusCode == 200) {
+      return List<MovieRecommendationModel>.from((repsonse.data['results'] as List)
+          .map((e) => MovieRecommendationModel.fromJson(e)));
     } else {
       throw ServerException(
         errorModel: ErrorModel.fromJson(repsonse.data),
