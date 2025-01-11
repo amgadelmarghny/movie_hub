@@ -18,3 +18,13 @@ final class GetMovieDetailsFailure extends MovieDetailsState {
 
   const GetMovieDetailsFailure({required this.errorMessage});
 }
+
+final class GetMovieRecommendationsLoading extends MovieDetailsState {}
+
+final class GetMovieRecommendationsSuccess extends MovieDetailsState {}
+
+final class GetMovieRecommendationsFailure extends MovieDetailsState {
+  final String errorMessage;
+
+  const GetMovieRecommendationsFailure({required this.errorMessage});
+}
