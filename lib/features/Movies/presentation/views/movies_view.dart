@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_hub/core/services/service_locator.dart';
-import 'package:movie_hub/features/Movies/presentation/bloc/movie_bloc.dart';
+import 'package:movie_hub/features/Movies/presentation/bloc/movie/movie_bloc.dart';
 import 'package:movie_hub/features/Movies/presentation/widgets/movie_view_body.dart';
 
 class MoviesView extends StatelessWidget {

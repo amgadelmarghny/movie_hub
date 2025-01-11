@@ -1,7 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_hub/features/Movies/presentation/bloc/movie_bloc.dart';
+import 'package:movie_hub/features/Movies/presentation/bloc/movie/movie_bloc.dart';
 import 'package:movie_hub/features/Movies/presentation/widgets/now_playing_section_success_widget.dart';
 
 class NowPlayingMoviesSection extends StatelessWidget {
