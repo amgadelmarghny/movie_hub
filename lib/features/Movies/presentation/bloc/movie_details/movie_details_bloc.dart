@@ -14,8 +14,8 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
   final GetMovieDetailsUsecase getMovieDetailsUsecase;
   final GetMovieRecomendationsUsecase getMovieRecomendationsUsecase;
   MovieDetails? movieDetails;
-  List<MovieRecommendation>? recomendationsList;
-
+  List<MovieRecommendation> recomendationsList= [];
+  static MovieDetailsBloc get(context) => BlocProvider.of(context);
   MovieDetailsBloc(
       {required this.getMovieDetailsUsecase,
       required this.getMovieRecomendationsUsecase})

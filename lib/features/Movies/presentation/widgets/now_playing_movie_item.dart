@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_hub/core/utils/api_constance.dart';
 import 'package:movie_hub/features/Movies/domain/entities/movie.dart';
+import 'package:movie_hub/features/Movies/presentation/views/movie_details_view.dart';
 import 'package:movie_hub/features/Movies/presentation/widgets/now_playing_movie_item_text.dart';
 
 class NowPlayingMovieItem extends StatelessWidget {
@@ -16,7 +17,8 @@ class NowPlayingMovieItem extends StatelessWidget {
     return GestureDetector(
       key: const Key('openMovieMinimalDetail'),
       onTap: () {
-        // TODO
+        Navigator.pushNamed(context, MovieDetailsView.pageRoute,
+            arguments: movieModel.id);
       },
       child: Stack(
         children: [

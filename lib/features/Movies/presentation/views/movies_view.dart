@@ -7,6 +7,8 @@ import 'package:movie_hub/features/Movies/presentation/widgets/movie_view_body.d
 class MoviesView extends StatelessWidget {
   const MoviesView({super.key});
 
+  static const String pageRoute = 'MoviesView';
+  
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -18,8 +20,7 @@ class MoviesView extends StatelessWidget {
       )
         ..add(GetNowPlayingMoviesEvent())
         ..add(GetPopularMoviesEvent())
-        ..add(GetTopRatedMoviesEvent())
-        ,
+        ..add(GetTopRatedMoviesEvent()),
       child: const Scaffold(
         body: MovieViewBody(),
       ),

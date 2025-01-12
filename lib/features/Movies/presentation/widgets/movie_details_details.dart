@@ -24,12 +24,14 @@ class MovieDetailsDetails extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(movieDetails.title,
-                  style: GoogleFonts.poppins(
-                    fontSize: 23,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.2,
-                  )),
+              Text(
+                movieDetails.title,
+                style: GoogleFonts.poppins(
+                  fontSize: 23,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.2,
+                ),
+              ),
               const SizedBox(height: 8.0),
               MovieReleaseDateAndVoteAvarageAndRunTimeDetails(
                 releaseDate: movieDetails.releaseDate,

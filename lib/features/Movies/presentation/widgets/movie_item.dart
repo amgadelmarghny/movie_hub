@@ -2,12 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_hub/core/utils/api_constance.dart';
 import 'package:movie_hub/features/Movies/domain/entities/movie.dart';
+import 'package:movie_hub/features/Movies/presentation/views/movie_details_view.dart';
 import 'package:movie_hub/features/Movies/presentation/widgets/movie_loading_item.dart';
 import 'package:shimmer/shimmer.dart';
 
 class MovieItem extends StatelessWidget {
   const MovieItem({
-    super.key, required this.movieModel,
+    super.key,
+    required this.movieModel,
   });
   final Movie movieModel;
   @override
@@ -16,7 +18,8 @@ class MovieItem extends StatelessWidget {
       padding: const EdgeInsets.only(right: 8.0),
       child: InkWell(
         onTap: () {
-          /// TODO : NAVIGATE TO  MOVIE DETAILS
+          Navigator.pushNamed(context, MovieDetailsView.pageRoute,
+              arguments: movieModel.id);
         },
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(8.0)),

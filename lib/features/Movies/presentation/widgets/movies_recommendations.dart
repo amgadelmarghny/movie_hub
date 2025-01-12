@@ -6,7 +6,8 @@ import 'package:movie_hub/features/Movies/domain/entities/movie_recommendation.d
 import 'package:shimmer/shimmer.dart';
 
 class MoviesRecommendationsSection extends StatelessWidget {
-  const MoviesRecommendationsSection({super.key, required this.moviesRecommendationList});
+  const MoviesRecommendationsSection(
+      {super.key, required this.moviesRecommendationList});
   final List<MovieRecommendation> moviesRecommendationList;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,9 @@ class MoviesRecommendationsSection extends StatelessWidget {
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(4.0)),
               child: CachedNetworkImage(
-                imageUrl: ApiConstance.imageUrl(moviesRecommendationList[index].backdropPath!),
+                imageUrl: ApiConstance.imageUrl(moviesRecommendationList[index]
+                        .backdropPath ??
+                    'https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'),
                 placeholder: (context, url) => Shimmer.fromColors(
                   baseColor: Colors.grey[850]!,
                   highlightColor: Colors.grey[800]!,
