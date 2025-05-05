@@ -26,7 +26,9 @@ class MovieItem extends StatelessWidget {
           child: CachedNetworkImage(
             width: 120.0,
             fit: BoxFit.cover,
-            imageUrl: ApiConstance.imageUrl(movieModel.backdropPath!),
+            imageUrl: movieModel.backdropPath != null
+                ? ApiConstance.imageUrl(movieModel.backdropPath!)
+                : 'https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg',
             placeholder: (context, url) => Shimmer.fromColors(
               baseColor: Colors.grey[850]!,
               highlightColor: Colors.grey[800]!,

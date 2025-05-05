@@ -8,7 +8,7 @@ class MovieReleaseDateAndVoteAvarageAndRunTimeDetails extends StatelessWidget {
     required this.runtime,
   });
 
-  final String releaseDate ;
+  final String releaseDate;
   final int runtime;
   final double voteAverage;
 
@@ -43,12 +43,12 @@ class MovieReleaseDateAndVoteAvarageAndRunTimeDetails extends StatelessWidget {
             ),
             const SizedBox(width: 4.0),
             Text(
-              (voteAverage /2).toStringAsFixed(1),
+              (voteAverage / 2).toStringAsFixed(1),
               style: const TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w500,
-                letterSpacing: 1.2,
-              ),
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 1.2,
+                  color: Colors.white),
             ),
             const SizedBox(width: 4.0),
             Text(

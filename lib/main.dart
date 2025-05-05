@@ -6,7 +6,7 @@ import 'package:movie_hub/core/utils/bloc_observer.dart';
 import 'package:movie_hub/features/Movies/presentation/views/movie_details_view.dart';
 import 'package:movie_hub/features/Movies/presentation/views/movies_view.dart';
 
-void main() async {
+void main() {
   DioHelper.init();
   ServiceLocator.init();
   Bloc.observer = MyBlocObserver();

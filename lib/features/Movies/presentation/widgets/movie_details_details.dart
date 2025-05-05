@@ -27,10 +27,10 @@ class MovieDetailsDetails extends StatelessWidget {
               Text(
                 movieDetails.title,
                 style: GoogleFonts.poppins(
-                  fontSize: 23,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 1.2,
-                ),
+                    fontSize: 23,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.2,
+                    color: Colors.white),
               ),
               const SizedBox(height: 8.0),
               MovieReleaseDateAndVoteAvarageAndRunTimeDetails(
@@ -42,10 +42,10 @@ class MovieDetailsDetails extends StatelessWidget {
               Text(
                 movieDetails.overview,
                 style: const TextStyle(
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 1.2,
-                ),
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 1.2,
+                    color: Colors.white),
               ),
               const SizedBox(height: 8.0),
               Text(

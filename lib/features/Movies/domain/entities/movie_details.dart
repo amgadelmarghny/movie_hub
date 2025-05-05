@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:movie_hub/features/Movies/domain/entities/genres.dart';
 
 class MovieDetails extends Equatable {
-  final String backdropPath;
+  final String? backdropPath;
   final List<Genres> genres;
   final int id;
   final String overview;
@@ -24,7 +24,7 @@ class MovieDetails extends Equatable {
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         backdropPath,
         genres,
         id,
